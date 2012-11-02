@@ -1,10 +1,13 @@
 import math
+import nltk
+
 
 def extractTopicsUsingTF():
+	'''Returns topics extracted based on observed term frequencies'''
 	return
 
 
-def extractTopicsUsingTF-IDF():
+def extractTopicsUsingTFIDF():
 	return
 
 
