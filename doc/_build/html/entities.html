@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>topicsExtractor Module &mdash; topicsExtractor 0.1 documentation</title>
+    <title>entities Module &mdash; topicsExtractor 0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="topicsExtractor 0.1 documentation" href="index.html" />
     <link rel="up" title="src" href="modules.html" />
-    <link rel="next" title="utils Module" href="utils.html" />
-    <link rel="prev" title="main Module" href="main.html" />
+    <link rel="next" title="main Module" href="main.html" />
+    <link rel="prev" title="src" href="modules.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -48,10 +48,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="utils.html" title="utils Module"
+          <a href="main.html" title="main Module"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="main.html" title="main Module"
+          <a href="modules.html" title="src"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">topicsExtractor 0.1 documentation</a> &raquo;</li>
           <li><a href="modules.html" accesskey="U">src</a> &raquo;</li> 
@@ -63,25 +63,50 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="module-topicsExtractor">
-<span id="topicsextractor-module"></span><h1>topicsExtractor Module<a class="headerlink" href="#module-topicsExtractor" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="topicsExtractor.extractTopicsUsingLDA">
-<tt class="descclassname">topicsExtractor.</tt><tt class="descname">extractTopicsUsingLDA</tt><big>(</big><big>)</big><a class="headerlink" href="#topicsExtractor.extractTopicsUsingLDA" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns topics extracted based on <tt class="docutils literal"><span class="pre">LDA</span> <span class="pre">trained</span> <span class="pre">topic</span> <span class="pre">Model</span></tt></p>
+  <div class="section" id="module-entities">
+<span id="entities-module"></span><h1>entities Module<a class="headerlink" href="#module-entities" title="Permalink to this headline">¶</a></h1>
+<p>This module contains all the <strong>Entities</strong> related to profiling our entity</p>
+<dl class="class">
+<dt id="entities.Doc">
+<em class="property">class </em><tt class="descclassname">entities.</tt><tt class="descname">Doc</tt><big>(</big><em>id</em>, <em>name</em>, <em>docs</em><big>)</big><a class="headerlink" href="#entities.Doc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents the Document</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="entities.User">
+<em class="property">class </em><tt class="descclassname">entities.</tt><tt class="descname">User</tt><big>(</big><em>id</em>, <em>name</em>, <em>docs</em><big>)</big><a class="headerlink" href="#entities.User" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents the User</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="topicsExtractor.extractTopicsUsingTF">
-<tt class="descclassname">topicsExtractor.</tt><tt class="descname">extractTopicsUsingTF</tt><big>(</big><big>)</big><a class="headerlink" href="#topicsExtractor.extractTopicsUsingTF" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns topics extracted based on observed <tt class="docutils literal"><span class="pre">TF</span> <span class="pre">term</span> <span class="pre">frequencies</span></tt></p>
-</dd></dl>
+<dt id="entities.freq">
+<tt class="descclassname">entities.</tt><tt class="descname">freq</tt><big>(</big><em>word</em>, <em>doc</em><big>)</big><a class="headerlink" href="#entities.freq" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="function">
-<dt id="topicsExtractor.extractTopicsUsingTFIDF">
-<tt class="descclassname">topicsExtractor.</tt><tt class="descname">extractTopicsUsingTFIDF</tt><big>(</big><big>)</big><a class="headerlink" href="#topicsExtractor.extractTopicsUsingTFIDF" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns topics extracted based on observed <tt class="docutils literal"><span class="pre">TF-IDF</span> <span class="pre">scores</span></tt></p>
-</dd></dl>
+<dt id="entities.idf">
+<tt class="descclassname">entities.</tt><tt class="descname">idf</tt><big>(</big><em>word</em>, <em>list_of_docs</em><big>)</big><a class="headerlink" href="#entities.idf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="entities.num_docs_containing">
+<tt class="descclassname">entities.</tt><tt class="descname">num_docs_containing</tt><big>(</big><em>word</em>, <em>list_of_docs</em><big>)</big><a class="headerlink" href="#entities.num_docs_containing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="entities.tf">
+<tt class="descclassname">entities.</tt><tt class="descname">tf</tt><big>(</big><em>word</em>, <em>doc</em><big>)</big><a class="headerlink" href="#entities.tf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="entities.tf_idf">
+<tt class="descclassname">entities.</tt><tt class="descname">tf_idf</tt><big>(</big><em>word</em>, <em>doc</em>, <em>list_of_docs</em><big>)</big><a class="headerlink" href="#entities.tf_idf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="entities.word_count">
+<tt class="descclassname">entities.</tt><tt class="descname">word_count</tt><big>(</big><em>doc</em><big>)</big><a class="headerlink" href="#entities.word_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 
@@ -92,11 +117,11 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="main.html"
-                        title="previous chapter">main Module</a></p>
+  <p class="topless"><a href="modules.html"
+                        title="previous chapter">src</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="utils.html"
-                        title="next chapter">utils Module</a></p>
+  <p class="topless"><a href="main.html"
+                        title="next chapter">main Module</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -124,10 +149,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="utils.html" title="utils Module"
+          <a href="main.html" title="main Module"
              >next</a> |</li>
         <li class="right" >
-          <a href="main.html" title="main Module"
+          <a href="modules.html" title="src"
              >previous</a> |</li>
         <li><a href="index.html">topicsExtractor 0.1 documentation</a> &raquo;</li>
           <li><a href="modules.html" >src</a> &raquo;</li> 
