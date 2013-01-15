@@ -90,6 +90,60 @@ This corpus could be used in the different topics extraction modules</p>
 
 </dd></dl>
 
+<dl class="class">
+<dt id="utils.IDF">
+<em class="property">class </em><tt class="descclassname">utils.</tt><tt class="descname">IDF</tt><big>(</big><em>dictsCollection</em><big>)</big><a class="headerlink" href="#utils.IDF" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class helps in computing the IDF of a document collection</p>
+<dl class="method">
+<dt id="utils.IDF.getScore">
+<tt class="descname">getScore</tt><big>(</big><em>word</em><big>)</big><a class="headerlink" href="#utils.IDF.getScore" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="utils.TextUtils">
+<em class="property">class </em><tt class="descclassname">utils.</tt><tt class="descname">TextUtils</tt><a class="headerlink" href="#utils.TextUtils" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains utility functions related to operations on text</p>
+<dl class="attribute">
+<dt id="utils.TextUtils.STEMMER">
+<tt class="descname">STEMMER</tt><em class="property"> = &lt;PorterStemmer&gt;</em><a class="headerlink" href="#utils.TextUtils.STEMMER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="utils.TextUtils.STOPWORDS">
+<tt class="descname">STOPWORDS</tt><em class="property"> = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', 'your', 'yours', 'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she', 'her', 'hers', 'herself', 'it', 'its', 'itself', 'they', 'them', 'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 'this', 'that', 'these', 'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', 'should', 'now']</em><a class="headerlink" href="#utils.TextUtils.STOPWORDS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="utils.TextUtils.is_not_TweetStopWord">
+<em class="property">static </em><tt class="descname">is_not_TweetStopWord</tt><big>(</big><em>word</em><big>)</big><a class="headerlink" href="#utils.TextUtils.is_not_TweetStopWord" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all tweet specific stopwords</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="utils.TextUtils.preprocessText">
+<em class="property">static </em><tt class="descname">preprocessText</tt><big>(</big><em>text</em><big>)</big><a class="headerlink" href="#utils.TextUtils.preprocessText" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Preprocess all the text</strong></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="utils.WordCounter">
+<em class="property">class </em><tt class="descclassname">utils.</tt><tt class="descname">WordCounter</tt><a class="headerlink" href="#utils.WordCounter" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="staticmethod">
+<dt id="utils.WordCounter.wordCount">
+<em class="property">static </em><tt class="descname">wordCount</tt><big>(</big><em>doc</em>, <em>docDict</em><big>)</big><a class="headerlink" href="#utils.WordCounter.wordCount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="utils.WordCounter.wordDict">
+<tt class="descname">wordDict</tt><em class="property"> = {}</em><a class="headerlink" href="#utils.WordCounter.wordDict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="function">
 <dt id="utils.dirFilesIterator">
 <tt class="descclassname">utils.</tt><tt class="descname">dirFilesIterator</tt><big>(</big><em>folder</em><big>)</big><a class="headerlink" href="#utils.dirFilesIterator" title="Permalink to this definition">¶</a></dt>
@@ -97,15 +151,19 @@ This corpus could be used in the different topics extraction modules</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="utils.freq">
+<tt class="descclassname">utils.</tt><tt class="descname">freq</tt><big>(</big><em>word</em>, <em>doc</em><big>)</big><a class="headerlink" href="#utils.freq" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
 <dt id="utils.getTFStats">
 <tt class="descclassname">utils.</tt><tt class="descname">getTFStats</tt><big>(</big><em>document</em><big>)</big><a class="headerlink" href="#utils.getTFStats" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="utils.is_not_TweetStopWord">
-<tt class="descclassname">utils.</tt><tt class="descname">is_not_TweetStopWord</tt><big>(</big><em>word</em><big>)</big><a class="headerlink" href="#utils.is_not_TweetStopWord" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove all tweet specific stopwords</p>
-</dd></dl>
+<dt id="utils.idf">
+<tt class="descclassname">utils.</tt><tt class="descname">idf</tt><big>(</big><em>word</em>, <em>list_of_docs</em><big>)</big><a class="headerlink" href="#utils.idf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="function">
 <dt id="utils.norm_fd">
@@ -114,10 +172,24 @@ This corpus could be used in the different topics extraction modules</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="utils.preprocessText">
-<tt class="descclassname">utils.</tt><tt class="descname">preprocessText</tt><big>(</big><em>text</em><big>)</big><a class="headerlink" href="#utils.preprocessText" title="Permalink to this definition">¶</a></dt>
-<dd><p>Preprocess all the text</p>
-</dd></dl>
+<dt id="utils.num_docs_containing">
+<tt class="descclassname">utils.</tt><tt class="descname">num_docs_containing</tt><big>(</big><em>word</em>, <em>list_of_docs</em><big>)</big><a class="headerlink" href="#utils.num_docs_containing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="utils.tf">
+<tt class="descclassname">utils.</tt><tt class="descname">tf</tt><big>(</big><em>word</em>, <em>doc</em><big>)</big><a class="headerlink" href="#utils.tf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="utils.tf_idf">
+<tt class="descclassname">utils.</tt><tt class="descname">tf_idf</tt><big>(</big><em>word</em>, <em>doc</em>, <em>list_of_docs</em><big>)</big><a class="headerlink" href="#utils.tf_idf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="utils.word_count">
+<tt class="descclassname">utils.</tt><tt class="descname">word_count</tt><big>(</big><em>doc</em><big>)</big><a class="headerlink" href="#utils.word_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 
