@@ -25,15 +25,23 @@ class TextUtils:
     # Function to preprocess the text
     def preprocessText(text):
         ''' **Preprocess all the text** '''
+        ''' #s0 remove Punctuations '''
         ''' #s1 #Tokenize'''
         ''' #s2 #RemoveStopWords--Generic'''
         ''' #s3 #RemoveStopWords--Twitter Specific'''
         ''' #s4 #Stemify'''
         tokens = [x.lower() for x in text]
-        tokens = filter(is_not_TweetStopWord,tokens)
-        doc = [word for word in tokens if word not in STOPWORDS and len(word) > 3]
-        doc = [STEMMER.stem(word) for word in doc]
+        tokens = filter(TextUtils.is_not_TweetStopWord,tokens)
+        doc = [word for word in tokens if word not in TextUtils.STOPWORDS and len(word) > 3]
+        doc = [TextUtils.STEMMER.stem(word) for word in doc]
         return doc
+
+    @staticmethod
+    # Function to preprocess a Line.. by removing the punctuations
+    def preprocessLine(text):
+        text = text.replace('.',' ').replace('!',' ').replace('/',' ').replace('\\',' ')
+        text = text.replace('?',' ').replace('-',' ').replace('\'',' ').replace('"',' ').replace('*',' ')
+        return text
 
 #############################################################################################
 class WordCounter:
@@ -43,9 +51,12 @@ class WordCounter:
     # returns word count for the list of words in the docDictionary
     def wordCount(doc,docDict):
         for word in doc:
-            docDict[word] = doc.count(word)
+            d = dict()
+            d['wordCount'] = doc.count(word) 
+            docDict[word] = d 
 
-#############################################################################################
+###############################Document Collection based Methods################################
+##### IDF Computation #####
 class IDF:            
     ''' This class helps in computing the IDF of a document collection'''
     def __init__(self,dictsCollection):
@@ -58,9 +69,17 @@ class IDF:
                 self.dict[word] = self.dict[word] + 1
     
     ''' Returns the IDF-score(**number of documents containing the word**) of a word'''
-    def getScore(word):
+    def getScore(self,word):
         if self.dict.has_key(word): return self.dict[word]
         return 0
+
+
+##### Topic Models Computation #####
+class TopicModels:
+    ''' This class helps in computing the IDF of a document collection'''
+    def __init__(self,dictsCollection):
+        self.topicModel = {}
+
 
 #############################################################################################
 
@@ -107,103 +126,103 @@ class Document:
 		return self.text
 
 
-##########################################################
-####################################################################################
-#-*- coding: utf-8 -*-
+# ##########################################################
+# ####################################################################################
+# #-*- coding: utf-8 -*-
  
-import re
-import nltk
-from nltk.tokenize import RegexpTokenizer
-from nltk import bigrams, trigrams
-import math
- 
- 
-stopwords = nltk.corpus.stopwords.words('portuguese')
-tokenizer = RegexpTokenizer("[\w]+", flags = re.UNICODE) 
- 
-def freq(word, doc):
-    return doc.count(word)
+# import re
+# import nltk
+# from nltk.tokenize import RegexpTokenizer
+# from nltk import bigrams, trigrams
+# import math
  
  
-def word_count(doc):
-    return len(doc)
+# stopwords = nltk.corpus.stopwords.words('portuguese')
+# tokenizer = RegexpTokenizer("[\w]+", flags = re.UNICODE) 
+ 
+# def freq(word, doc):
+#     return doc.count(word)
  
  
-def tf(word, doc):
-    return (freq(word, doc) / float(word_count(doc)))
+# def word_count(doc):
+#     return len(doc)
  
  
-def num_docs_containing(word, list_of_docs):
-    count = 0
-    for document in list_of_docs:
-        if freq(word, document) > 0:
-            count += 1
-    return 1 + count
+# def tf(word, doc):
+#     return (freq(word, doc) / float(word_count(doc)))
  
  
-def idf(word, list_of_docs):
-    return math.log(len(list_of_docs) /
-            float(num_docs_containing(word, list_of_docs)))
+# def num_docs_containing(word, list_of_docs):
+#     count = 0
+#     for document in list_of_docs:
+#         if freq(word, document) > 0:
+#             count += 1
+#     return 1 + count
  
  
-def tf_idf(word, doc, list_of_docs):
-    return (tf(word, doc) * idf(word, list_of_docs))
+# def idf(word, list_of_docs):
+#     return math.log(len(list_of_docs) /
+#             float(num_docs_containing(word, list_of_docs)))
  
-#Compute the frequency for each term.
-vocabulary = []
-docs = {}
-all_tips = []
-for tip in (['documment 1', 'documment 2']):
-    tokens = tokenizer.tokenize(tip)
-    # tokens = tokenizer.tokenize(tip.text)
  
-    bi_tokens = bigrams(tokens)
-    tri_tokens = trigrams(tokens)
-    tokens = [token.lower() for token in tokens if len(token) > 2]
-    tokens = [token for token in tokens if token not in stopwords]
+# def tf_idf(word, doc, list_of_docs):
+#     return (tf(word, doc) * idf(word, list_of_docs))
  
-    bi_tokens = [' '.join(token).lower() for token in bi_tokens]
-    bi_tokens = [token for token in bi_tokens if token not in stopwords]
+# #Compute the frequency for each term.
+# vocabulary = []
+# docs = {}
+# all_tips = []
+# for tip in (['documment 1', 'documment 2']):
+#     tokens = tokenizer.tokenize(tip)
+#     # tokens = tokenizer.tokenize(tip.text)
  
-    tri_tokens = [' '.join(token).lower() for token in tri_tokens]
-    tri_tokens = [token for token in tri_tokens if token not in stopwords]
+#     bi_tokens = bigrams(tokens)
+#     tri_tokens = trigrams(tokens)
+#     tokens = [token.lower() for token in tokens if len(token) > 2]
+#     tokens = [token for token in tokens if token not in stopwords]
  
-    final_tokens = []
-    final_tokens.extend(tokens)
-    final_tokens.extend(bi_tokens)
-    final_tokens.extend(tri_tokens)
-    docs[tip] = {'freq': {}, 'tf': {}, 'idf': {},
-                        'tf-idf': {}, 'tokens': []}
+#     bi_tokens = [' '.join(token).lower() for token in bi_tokens]
+#     bi_tokens = [token for token in bi_tokens if token not in stopwords]
  
-    for token in final_tokens:
-        #The frequency computed for each tip
-        docs[tip]['freq'][token] = freq(token, final_tokens)
-        #The term-frequency (Normalized Frequency)
-        docs[tip]['tf'][token] = tf(token, final_tokens)
-        docs[tip]['tokens'] = final_tokens
+#     tri_tokens = [' '.join(token).lower() for token in tri_tokens]
+#     tri_tokens = [token for token in tri_tokens if token not in stopwords]
  
-    vocabulary.append(final_tokens)
+#     final_tokens = []
+#     final_tokens.extend(tokens)
+#     final_tokens.extend(bi_tokens)
+#     final_tokens.extend(tri_tokens)
+#     docs[tip] = {'freq': {}, 'tf': {}, 'idf': {},
+#                         'tf-idf': {}, 'tokens': []}
  
-for doc in docs:
-    for token in docs[doc]['tf']:
-        #The Inverse-Document-Frequency
-        docs[doc]['idf'][token] = idf(token, vocabulary)
-        #The tf-idf
-        docs[doc]['tf-idf'][token] = tf_idf(token, docs[doc]['tokens'], vocabulary)
+#     for token in final_tokens:
+#         #The frequency computed for each tip
+#         docs[tip]['freq'][token] = freq(token, final_tokens)
+#         #The term-frequency (Normalized Frequency)
+#         docs[tip]['tf'][token] = tf(token, final_tokens)
+#         docs[tip]['tokens'] = final_tokens
  
-#Now let's find out the most relevant words by tf-idf.
-words = {}
-for doc in docs:
-    for token in docs[doc]['tf-idf']:
-        if token not in words:
-            words[token] = docs[doc]['tf-idf'][token]
-        else:
-            if docs[doc]['tf-idf'][token] > words[token]:
-                words[token] = docs[doc]['tf-idf'][token]
+#     vocabulary.append(final_tokens)
  
-    print doc
-    for token in docs[doc]['tf-idf']:
-        print token, docs[doc]['tf-idf'][token]
+# for doc in docs:
+#     for token in docs[doc]['tf']:
+#         #The Inverse-Document-Frequency
+#         docs[doc]['idf'][token] = idf(token, vocabulary)
+#         #The tf-idf
+#         docs[doc]['tf-idf'][token] = tf_idf(token, docs[doc]['tokens'], vocabulary)
  
-for item in sorted(words.items(), key=lambda x: x[1], reverse=True):
-    print "%f <= %s" % (item[1], item[0])		
+# #Now let's find out the most relevant words by tf-idf.
+# words = {}
+# for doc in docs:
+#     for token in docs[doc]['tf-idf']:
+#         if token not in words:
+#             words[token] = docs[doc]['tf-idf'][token]
+#         else:
+#             if docs[doc]['tf-idf'][token] > words[token]:
+#                 words[token] = docs[doc]['tf-idf'][token]
+ 
+#     print doc
+#     for token in docs[doc]['tf-idf']:
+#         print token, docs[doc]['tf-idf'][token]
+ 
+# for item in sorted(words.items(), key=lambda x: x[1], reverse=True):
+#     print "%f <= %s" % (item[1], item[0])		

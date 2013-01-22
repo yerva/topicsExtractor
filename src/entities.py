@@ -3,8 +3,7 @@
 # ''' @User represents user'''
 # ''' @Doc represents the document'''
 
-import utils
-
+from utils import *
 
 #############################################################################################
 class User:
@@ -16,6 +15,17 @@ class User:
         self.doc = Doc(ID,name,docLoc) ### Creating a Document Object
         self.lists = lists ## set of lists in which this user is present
         return
+
+    def getTopKeywords_TF(self,k=10):
+        swc=sorted(self.doc.wordCountDict.items(),reverse=True,key=lambda x: x[1]['wordCount'])
+        return swc[0:min(k,len(swc))] 
+
+    def getTopKeywords_IDF(self,k=10):
+        swc=sorted(self.doc.wordCountDict.items(),reverse=True,key=lambda x: x[1]['IDF'])
+        return swc[0:min(k,len(swc))] 
+    def getTopKeywords(self,TYPE='TF-IDF',k=10):
+        swc=sorted(self.doc.wordCountDict.items(),reverse=True,key=lambda x: x[1][TYPE])
+        return swc[0:min(k,len(swc))] 
 
 #############################################################################################
 class Doc:
@@ -30,10 +40,22 @@ class Doc:
 
     def computeWordCounts(self):
         wordList = []
-        for l in open(self.doc): wordList = wordList + l.strip().split()
+        for l in open(self.doc): wordList = wordList + TextUtils.preprocessLine(l.strip()).split()
         processWordList = TextUtils.preprocessText(wordList)
         WordCounter.wordCount(processWordList,self.wordCountDict)
         return
+
+    def computeIDFCounts(self,IDF_Object):
+        self.N = IDF_Object.N
+        for word in self.wordCountDict:
+            self.wordCountDict[word]['IDF'] = IDF_Object.getScore(word)
+        self.computeTFIDFscores()
+
+    def computeTFIDFscores(self):
+        for word in self.wordCountDict:
+            d=self.wordCountDict[word]
+            self.wordCountDict[word]['TF-IDF'] = d['wordCount']/d['IDF']
+
 
 
 #############################################################################################
