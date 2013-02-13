@@ -102,6 +102,22 @@ This corpus could be used in the different topics extraction modules</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="utils.SemanticConcepts">
+<em class="property">class </em><tt class="descclassname">utils.</tt><tt class="descname">SemanticConcepts</tt><a class="headerlink" href="#utils.SemanticConcepts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracting topics/concepts from a users tweets using TextWise Semantic Tools</p>
+<dl class="method">
+<dt id="utils.SemanticConcepts.getConcepts">
+<tt class="descname">getConcepts</tt><big>(</big><em>user</em>, <em>userContentFile</em><big>)</big><a class="headerlink" href="#utils.SemanticConcepts.getConcepts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="utils.SemanticConcepts.getUserData">
+<tt class="descname">getUserData</tt><big>(</big><em>userContentFile</em><big>)</big><a class="headerlink" href="#utils.SemanticConcepts.getUserData" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="utils.TextUtils">
 <em class="property">class </em><tt class="descclassname">utils.</tt><tt class="descname">TextUtils</tt><a class="headerlink" href="#utils.TextUtils" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contains utility functions related to operations on text</p>
@@ -122,11 +138,22 @@ This corpus could be used in the different topics extraction modules</p>
 </dd></dl>
 
 <dl class="staticmethod">
+<dt id="utils.TextUtils.preprocessLine">
+<em class="property">static </em><tt class="descname">preprocessLine</tt><big>(</big><em>text</em><big>)</big><a class="headerlink" href="#utils.TextUtils.preprocessLine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
 <dt id="utils.TextUtils.preprocessText">
 <em class="property">static </em><tt class="descname">preprocessText</tt><big>(</big><em>text</em><big>)</big><a class="headerlink" href="#utils.TextUtils.preprocessText" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Preprocess all the text</strong></p>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="class">
+<dt id="utils.TopicModels">
+<em class="property">class </em><tt class="descclassname">utils.</tt><tt class="descname">TopicModels</tt><big>(</big><em>dictsCollection</em><big>)</big><a class="headerlink" href="#utils.TopicModels" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class helps in computing the IDF of a document collection</p>
 </dd></dl>
 
 <dl class="class">
@@ -151,18 +178,8 @@ This corpus could be used in the different topics extraction modules</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="utils.freq">
-<tt class="descclassname">utils.</tt><tt class="descname">freq</tt><big>(</big><em>word</em>, <em>doc</em><big>)</big><a class="headerlink" href="#utils.freq" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
 <dt id="utils.getTFStats">
 <tt class="descclassname">utils.</tt><tt class="descname">getTFStats</tt><big>(</big><em>document</em><big>)</big><a class="headerlink" href="#utils.getTFStats" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="utils.idf">
-<tt class="descclassname">utils.</tt><tt class="descname">idf</tt><big>(</big><em>word</em>, <em>list_of_docs</em><big>)</big><a class="headerlink" href="#utils.idf" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -170,26 +187,6 @@ This corpus could be used in the different topics extraction modules</p>
 <tt class="descclassname">utils.</tt><tt class="descname">norm_fd</tt><big>(</big><em>fd</em><big>)</big><a class="headerlink" href="#utils.norm_fd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Normalizes the term frequency distribution</p>
 </dd></dl>
-
-<dl class="function">
-<dt id="utils.num_docs_containing">
-<tt class="descclassname">utils.</tt><tt class="descname">num_docs_containing</tt><big>(</big><em>word</em>, <em>list_of_docs</em><big>)</big><a class="headerlink" href="#utils.num_docs_containing" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="utils.tf">
-<tt class="descclassname">utils.</tt><tt class="descname">tf</tt><big>(</big><em>word</em>, <em>doc</em><big>)</big><a class="headerlink" href="#utils.tf" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="utils.tf_idf">
-<tt class="descclassname">utils.</tt><tt class="descname">tf_idf</tt><big>(</big><em>word</em>, <em>doc</em>, <em>list_of_docs</em><big>)</big><a class="headerlink" href="#utils.tf_idf" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="utils.word_count">
-<tt class="descclassname">utils.</tt><tt class="descname">word_count</tt><big>(</big><em>doc</em><big>)</big><a class="headerlink" href="#utils.word_count" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </div>
 

@@ -1,0 +1,9 @@
+The Meta Information related to the different folders.
+
+
+test
+users
+TM_GT : Twitter Users tweets in a single file. All the files in this folder will be used to construct the Topic Models
+TM_SO_GT : The Stack Overflow Users Content will be put in single files, and thus act as ground truth for extracting the topics
+
+output : The topics extracted using different techniques will be put into this folder

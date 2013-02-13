@@ -2,6 +2,8 @@ import nltk
 import os
 from nltk.probability import *
 from nltk.corpus import *
+import urllib2
+import simplejson as json
 
 
 #############################################################################################
@@ -79,6 +81,40 @@ class TopicModels:
     ''' This class helps in computing the IDF of a document collection'''
     def __init__(self,dictsCollection):
         self.topicModel = {}
+
+
+##### Extracting Concepts Using TextWise API #####
+class SemanticConcepts:
+    ''' Extracting topics/concepts from a users tweets using TextWise Semantic Tools '''
+    def __init__(self):
+        self.TOKEN = '70p6ywsv'
+        self.URL = "http://api.semantichacker.com/70p6ywsv/concept?format=json"
+
+    def getConcepts(self, user, userContentFile):
+        content=self.getUserData(userContentFile)
+
+        ## Request Builder
+        req=urllib2.Request(self.URL)
+        req.add_header('Content-Type','text/plain')
+        req.add_data(content)
+        resp = urllib2.urlopen(req)
+        data = resp.read()
+
+        concepts_json= json.loads(data)
+        concepts= concepts_json["conceptExtractor"]["conceptExtractorResponse"]["concepts"]
+
+        return concepts  
+
+    def getUserData(self,userContentFile):
+        userContent=""
+        for l in open(userContentFile):
+            userContent += l.strip().lower()
+        userContent = ' '.join(TextUtils.preprocessText(userContent.split()))
+        return userContent
+
+
+
+
 
 
 #############################################################################################

@@ -70,6 +70,16 @@
 <em class="property">class </em><tt class="descclassname">entities.</tt><tt class="descname">Doc</tt><big>(</big><em>ID</em>, <em>name</em>, <em>docLoc</em><big>)</big><a class="headerlink" href="#entities.Doc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents the Document</p>
 <dl class="method">
+<dt id="entities.Doc.computeIDFCounts">
+<tt class="descname">computeIDFCounts</tt><big>(</big><em>IDF_Object</em><big>)</big><a class="headerlink" href="#entities.Doc.computeIDFCounts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="entities.Doc.computeTFIDFscores">
+<tt class="descname">computeTFIDFscores</tt><big>(</big><big>)</big><a class="headerlink" href="#entities.Doc.computeTFIDFscores" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="entities.Doc.computeWordCounts">
 <tt class="descname">computeWordCounts</tt><big>(</big><big>)</big><a class="headerlink" href="#entities.Doc.computeWordCounts" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -80,6 +90,21 @@
 <dt id="entities.User">
 <em class="property">class </em><tt class="descclassname">entities.</tt><tt class="descname">User</tt><big>(</big><em>ID</em>, <em>name</em>, <em>docLoc</em>, <em>lists=</em><span class="optional">[</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#entities.User" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents the User</p>
+<dl class="method">
+<dt id="entities.User.getTopKeywords">
+<tt class="descname">getTopKeywords</tt><big>(</big><em>TYPE='TF-IDF'</em>, <em>k=10</em><big>)</big><a class="headerlink" href="#entities.User.getTopKeywords" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="entities.User.getTopKeywords_IDF">
+<tt class="descname">getTopKeywords_IDF</tt><big>(</big><em>k=10</em><big>)</big><a class="headerlink" href="#entities.User.getTopKeywords_IDF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="entities.User.getTopKeywords_TF">
+<tt class="descname">getTopKeywords_TF</tt><big>(</big><em>k=10</em><big>)</big><a class="headerlink" href="#entities.User.getTopKeywords_TF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </div>

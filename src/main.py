@@ -31,8 +31,12 @@ for doc in DocObjects:
 	DocObjects[doc].computeIDFCounts(IDF_OBJ)	
 ###########################################################################	
 
-u1=UserObjects['sampleuser1']
-print u1.getTopKeywords_TF(5)
-print u1.getTopKeywords_IDF(5)
+u1=UserObjects['imph0enix']
+u2=UserObjects['pirroh']
+print u1.getTopKeywords_TF(5) ### Return TopK TF based keywords
+print u1.getTopKeywords_IDF(5) ### Return TopK TF-IDF based keywords
 print '****'
 print u1.getTopKeywords('TF-IDF',5)
+
+def printK(u,TYPE='TF-IDF',NUM=10):
+	for x in u.getTopKeywords(TYPE,NUM): print x
